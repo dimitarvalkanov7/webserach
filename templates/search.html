@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="get" action="/search/">
+        <input 
+            type="text" 
+            id="search" 
+            name="search" 
+            {{if eq (len .CurrentSearch) 0}} value="" {{else}} value="{{.CurrentSearch}}" {{end}}>
+        <button type="submit">Search</button>
+    </form>
+    <br />
+    <br />
+    <br />
+    {{if ne (len .Urls) 0}}      
+        {{range $i, $url := .Urls}}
+        <div>
+            <a href="{{$url}}">{{index $.ShortUrls $i}}</a>
+        <div>
+        <br />
+        {{end}}    
+    {{end}}
+</body>
+</html>
